@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Audio Comparison Table</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px;
+      background: var(--bg, #f7f7f8);
+      color: var(--text, #1f2933);
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 15px;
+        font-size: clamp(1.75rem, 2vw + 1rem, 2.5rem);
+    }
+    h1 {
+      margin-bottom: 10px;
+      font-size: clamp(1.5rem, 1.5vw + 0.8rem, 2rem);
+    }
+
+    p.description {
+      /* margin-bottom: 24px;
+      max-width: 70ch;
+      line-height: 1.6; */
+      color: var(--subtext, #4b5563);
+    }
+    p.description2 {
+      text-align: center;
+      /* margin-bottom: 24px;
+      max-width: 70ch;
+      line-height: 1.6; */
+      color: var(--subtext, #4b5563);
+    }
+    .table-container {
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid rgba(128, 128, 128, 0.25);
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(6px);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+      table-layout: fixed;
+    }
+
+    col.col-timbre    { width: 16%; }
+    col.col-source    { width: 14%; }
+    col.col-cosyvoice { width: 14%; }
+    col.col-seedvc    { width: 14%; }
+    col.col-524s      { width: 14%; }
+    col.col-524p      { width: 14%; }
+    col.col-524sp     { width: 14%; }
+
+    thead {
+      background: rgba(30, 64, 175, 0.08);
+    }
+
+    th, td {
+      padding: 14px 16px;
+      text-align: left;
+      vertical-align: middle;
+      border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+    }
+
+    th {
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: #1f2937;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .timbre-label {
+      display: block;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .timbre-meta {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.85rem;
+      color: #64748b;
+      line-height: 1.4;
+    }
+
+    audio {
+      width: 100%;
+    }
+
+    .take-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #334155;
+    }
+
+    @media (max-width: 720px) {
+      table {
+        table-layout: auto;
+        min-width: 100%;
+      }
+      col {
+        width: auto !important;
+      }
+      th, td {
+        padding: 12px 10px;
+      }
+      .take-label {
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #0b1120;
+        color: #e5e7eb;
+      }
+
+      p.description {
+        color: #94a3b8;
+      }
+
+      .table-container {
+        background: rgba(15, 23, 42, 0.7);
+        border-color: rgba(148, 163, 184, 0.2);
+      }
+
+      thead {
+        background: rgba(79, 70, 229, 0.15);
+      }
+
+      th, td {
+        border-color: rgba(148, 163, 184, 0.15);
+      }
+
+      th {
+        color: #dbeafe;
+      }
+
+      .timbre-meta {
+        color: #97a6c1;
+      }
+
+      .take-label {
+        color: #cbd5f5;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>MSR-Codec</h2>
+    <p class="description2">
+      MSR-Codec: A Low-Bitrate Multi-Stream Residual Codec for High-Fidelity Speech Generation with Information Disentanglement<br>
+      Jingyu Li^1, Guangyan Zhang^1, Zhen Ye^2, Yiwen Guo^3<br>
+      1^LIGHTSPEED, Hong Kong SAR<br>
+      2^The Hong Kong University of Science and Technology, Hong Kong SAR<br>
+      3^Independent Researcher, Corresponding Author<br>
+    </p>
+  </header>
+  <header>
+    <h1>Zero-shot TTS</h1>
+    <!-- <p class="description">
+      Below are embedded audio tracks hosted in this repository. You can play them directly
+      through the controls in each row. Replace the file names and metadata with your own content.
+    </p> -->
+  </header>
+  <section class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Prompt Text</th>
+          <th>Prompt Speech</th>
+          <th>Generated Text</th>
+          <th>Generated Speech</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>On the second day, the boy climbed to the top of a cliff near the camp.</td>
+          <td>
+            <audio controls preload="metadata">
+              <source src="assets/tts/common_voice_en_17161.wav" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+          <td>The area was swirling in dust so intense that it hid the moon from view.</td>
+          <td>
+            <audio controls preload="metadata">
+              <source src="assets/tts/common_voice_en_17161-common_voice_en_17160.wav" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <td>She wasn't home, a neighbour said that he didn't think she came in last night.</td>
+          <td>
+            <audio controls preload="metadata">
+              <source src="assets/tts/common_voice_en_17389984.wav" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+          <td>Technically, breaking a mirror is not five years, but seven years of bad luck.</td>
+          <td>
+            <audio controls preload="metadata">
+              <source src="assets/tts/common_voice_en_17389984-common_voice_en_17389988.wav" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <td>Several people are walking out in the spotlight.</td>
+          <td>
+            <audio controls preload="metadata">
+              <source src="assets/tts/common_voice_en_177895.wav" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+          <td>A man is taking a look at the food products.</td>
+          <td>
+            <audio controls preload="metadata">
+              <source src="assets/tts/common_voice_en_177895-common_voice_en_177898.wav" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <td>The music, while technically a waltz, sounded more like a drunken tuba player falling into the orchestra's percussion section.</td>
+          <td>
+            <audio controls preload="metadata">
+              <source src="assets/tts/common_voice_en_18012457.wav" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+          <td>One of the world's biggest problems is the growth of the human population.</td>
+          <td>
+            <audio controls preload="metadata">
+              <source src="assets/tts/common_voice_en_18012457-common_voice_en_18012447.wav" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <td>She was singularly quick, singularly receptive.</td>
+          <td>
+            <audio controls preload="metadata">
+              <source src="assets/tts/common_voice_en_18554437.wav" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+          <td>Can't you see the scene? he asked with a queer smile of excitement.</td>
+          <td>
+            <audio controls preload="metadata">
+              <source src="assets/tts/common_voice_en_18554437-common_voice_en_18554439.wav" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <td>Some development processes usually conducted sequentially were conducted in parallel.</td>
+          <td>
+            <audio controls preload="metadata">
+              <source src="assets/tts/common_voice_en_18672480.wav" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+          <td>In testimony to investigators, the page described the relationship as consensual and not intimidating.</td>
+          <td>
+            <audio controls preload="metadata">
+              <source src="assets/tts/common_voice_en_18672480-common_voice_en_18672484.wav" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <header>
+    <h1>Voice Conversion</h1>
+    <!-- <p class="description">
+      Each timbre prompt spans three takes. Replace the placeholder audio sources with files in your repository.
+      Every cell contains a native <code>&lt;audio&gt;</code> player so listeners can compare model outputs quickly.
+    </p> -->
+  </header>
+
+  <section class="table-container">
+    <table>
+      <colgroup>
+        <col class="col-timbre">
+        <col class="col-source">
+        <col class="col-cosyvoice">
+        <col class="col-seedvc">
+        <col class="col-524s">
+        <col class="col-524p">
+        <col class="col-524sp">
+      </colgroup>
+      <thead>
+        <tr>
+          <th scope="col">Timbre Prompt</th>
+          <th scope="col">Source Audio</th>
+          <th scope="col">Cosyvoice2</th>
+          <th scope="col">Seed-VC</th>
+          <th scope="col">524+S</th>
+          <th scope="col">524+P</th>
+          <th scope="col">524+S+P</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Group 1 -->
+        <tr>
+          <td rowspan="3">
+            <audio controls preload="metadata">
+              <source src="assets/target/p318_354.wav" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/src/8555_284449_000053_000001.wav" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+            <span class="timbre-meta">
+              It isn't a very pretty cabin and the furniture is cheap and common, but I'm sure it is good enough for this wicked man and his family.
+            </span>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/cosyvoice2/p318_354_8555_284449_000053_000001.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/seed_vc/p318_354_8555_284449_000053_000001.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524/p318_354_8555_284449_000053_000001.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_prosody/p318_354_8555_284449_000053_000001.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_spk_prosody/p318_354_8555_284449_000053_000001.wav" type="audio/mpeg">
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/src/1188_133604_000004_000005.wav" type="audio/mpeg">
+            </audio>
+            <span class="timbre-meta">
+              You see how doubly, how intimately, opposed the ideas are; yet how difficult to explain without apparent contradiction.
+            </span>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/cosyvoice2/p318_354_1188_133604_000004_000005.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/seed_vc/p318_354_1188_133604_000004_000005.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524/p318_354_1188_133604_000004_000005.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_prosody/p318_354_1188_133604_000004_000005.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_spk_prosody/p318_354_1188_133604_000004_000005.wav" type="audio/mpeg">
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/src/260_123440_000015_000000.wav" type="audio/mpeg">
+            </audio>
+            <span class="timbre-meta">
+              As she said this she looked down at her hands, and was surprised to see that she had put on one of the Rabbit's little white kid gloves while she was talking.
+            </span>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/cosyvoice2/p318_354_260_123440_000015_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/seed_vc/p318_354_260_123440_000015_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524/p318_354_260_123440_000015_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_prosody/p318_354_260_123440_000015_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_spk_prosody/p318_354_260_123440_000015_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+        </tr>
+
+        <!-- Group 2 -->
+        <tr>
+          <td rowspan="3">
+            <audio controls preload="metadata">
+              <source src="assets/target/p269_236.wav" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/src/121_127105_000044_000000.wav" type="audio/mpeg">
+            </audio>
+            <span class="timbre-meta">
+              He had been left, by the death of their parents in India, guardian to a small nephew and a small niece, children of a younger, a military brother, whom he had lost two years before.
+            </span>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/cosyvoice2/p269_236_121_127105_000044_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/seed_vc/p269_236_121_127105_000044_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524/p269_236_121_127105_000044_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_prosody/p269_236_121_127105_000044_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_spk_prosody/p269_236_121_127105_000044_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/src/8230_279154_000020_000000.wav" type="audio/mpeg">
+            </audio>
+            <span class="timbre-meta">
+              The second datum is that we certainly have more capacity for knowing the past than for knowing the future.
+            </span>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/cosyvoice2/p269_236_8230_279154_000020_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/seed_vc/p269_236_8230_279154_000020_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524/p269_236_8230_279154_000020_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_prosody/p269_236_8230_279154_000020_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_spk_prosody/p269_236_8230_279154_000020_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/src/8455_210777_000065_000000.wav" type="audio/mpeg">
+            </audio>
+            <span class="timbre-meta">
+              Captain Battleax, of the john Bright, will have received a letter to the same effect from the First Lord of the Admiralty, and you will find him ready to co-operate with your Excellency in every respect.--I have the honour to be, sir, your Excellency's most obedient servant,
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/cosyvoice2/p269_236_8455_210777_000065_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/seed_vc/p269_236_8455_210777_000065_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524/p269_236_8455_210777_000065_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_prosody/p269_236_8455_210777_000065_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_spk_prosody/p269_236_8455_210777_000065_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+        </tr>
+
+        <!-- Group 3 -->
+        <tr>
+          <td rowspan="3">
+            <audio controls preload="metadata">
+              <source src="assets/target/p364_009.wav" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/src/1089_134691_000024_000000.wav" type="audio/mpeg">
+            </audio>
+            <span class="timbre-meta">
+              He recognized their speech collectively before he distinguished their faces.
+            </span>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/cosyvoice2/p364_009_1089_134691_000024_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/seed_vc/p364_009_1089_134691_000024_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524/p364_009_1089_134691_000024_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_prosody/p364_009_1089_134691_000024_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_spk_prosody/p364_009_1089_134691_000024_000000.wav" type="audio/mpeg">
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/src/1580_141084_000016_000002.wav" type="audio/mpeg">
+            </audio>
+            <span class="timbre-meta">
+              It is possible that I may be in a position then to indicate some course of action.
+            </span>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/cosyvoice2/p364_009_1580_141084_000016_000002.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/seed_vc/p364_009_1580_141084_000016_000002.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524/p364_009_1580_141084_000016_000002.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_prosody/p364_009_1580_141084_000016_000002.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_spk_prosody/p364_009_1580_141084_000016_000002.wav" type="audio/mpeg">
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/src/237_134500_000023_000002.wav" type="audio/mpeg">
+            </audio>
+            <span class="timbre-meta">
+              She wouldn't know how to go about it.
+            </span>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/cosyvoice2/p364_009_237_134500_000023_000002.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/seed_vc/p364_009_237_134500_000023_000002.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524/p364_009_237_134500_000023_000002.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_prosody/p364_009_237_134500_000023_000002.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_spk_prosody/p364_009_237_134500_000023_000002.wav" type="audio/mpeg">
+            </audio>
+          </td>
+        </tr>
+
+        <!-- Group 4 -->
+        <tr>
+          <td rowspan="3">
+            <audio controls preload="metadata">
+              <source src="assets/target/p237_196.wav" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/src/2300_131720_000040_000001.wav" type="audio/mpeg">
+            </audio>
+            <span class="timbre-meta">
+              The station at Berlin comprised five boilers, and six vertical steam engines driving by belts twelve Edison dynamos, each of about fifty five horse power capacity.
+            </span>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/cosyvoice2/p237_196_2300_131720_000040_000001.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/seed_vc/p237_196_2300_131720_000040_000001.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524/p237_196_2300_131720_000040_000001.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_prosody/p237_196_2300_131720_000040_000001.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_spk_prosody/p237_196_2300_131720_000040_000001.wav" type="audio/mpeg">
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/src/4446_2275_000002_000007.wav" type="audio/mpeg">
+            </audio>
+            <span class="timbre-meta">
+              She called his name on the threshold, but in her swift flight across the room she felt a change in him and caught herself up so deftly that he could not tell just when she did it. She merely brushed his cheek with her lips and put a hand lightly and joyously on either shoulder.
+            </span>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/cosyvoice2/p237_196_4446_2275_000002_000007.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/seed_vc/p237_196_4446_2275_000002_000007.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524/p237_196_4446_2275_000002_000007.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_prosody/p237_196_4446_2275_000002_000007.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_spk_prosody/p237_196_4446_2275_000002_000007.wav" type="audio/mpeg">
+            </audio>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/src/3570_5694_000006_000006.wav" type="audio/mpeg">
+            </audio>
+            <span class="timbre-meta">
+              When the quasi peaceable stage of industry is reached, with its fundamental institution of chattel slavery, the general principle, more or less rigorously applied, is that the base, industrious class should consume only what may be necessary to their subsistence.
+            </span>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/cosyvoice2/p237_196_3570_5694_000006_000006.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/seed_vc/p237_196_3570_5694_000006_000006.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524/p237_196_3570_5694_000006_000006.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_prosody/p237_196_3570_5694_000006_000006.wav" type="audio/mpeg">
+            </audio>
+          </td>
+          <td>
+            
+            <audio controls preload="metadata">
+              <source src="assets/524_spk_prosody/p237_196_3570_5694_000006_000006.wav" type="audio/mpeg">
+            </audio>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</body>
+</html>
