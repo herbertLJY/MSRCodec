@@ -7,7 +7,6 @@
     <b><em>MSR-Codec: A Low-Bitrate Multi-Stream Residual Codec for High-Fidelity Speech Generation with Information Disentanglement</em></b>
     </p>
     <p>
-      MSR-Codec: A Low-Bitrate Multi-Stream Residual Codec for High-Fidelity Speech Generation with Information Disentanglement<br>
       Jingyu Li^1, Guangyan Zhang^1, Zhen Ye^2, Yiwen Guo^3<br>
       1^LIGHTSPEED, Hong Kong SAR<br>
       2^The Hong Kong University of Science and Technology, Hong Kong SAR<br>
