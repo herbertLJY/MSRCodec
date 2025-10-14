@@ -1,0 +1,1 @@
+from src.modules.transforms.mel_spectrogram import TacotronMelSpectrogram
