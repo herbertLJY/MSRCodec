@@ -64,9 +64,6 @@ pip install -r requirements.txt
 **Checkpoint download**
 
 Please download the pretrained checkpoints into the folder: ckpt
-``` sh
-mkdir ckpt
-```
 - [Hubert model](https://dl.fbaipublicfiles.com/textless_nlp/twist/speech_tokenizer/mhubert_base_25hz_cp_mls_cv_sp_fisher.pt) 
 - [Hubert quantizer](https://dl.fbaipublicfiles.com/textless_nlp/twist/speech_tokenizer/mhubert_base_25hz_cp_mls_cv_sp_fisher_L11_km500.bin)
 - [CAM++](https://www.modelscope.cn/models/iic/speech_campplus_sv_zh_en_16k-common_advanced/resolve/master/campplus_cn_en_common.pt)
