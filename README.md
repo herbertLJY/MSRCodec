@@ -14,9 +14,7 @@
     </p>
 </div>
 
-<!-- ## MSR-Codec 🔥 -->
-
-### Overview
+## Overview
 
 Audio codecs are a critical component of modern speech generation systems. This paper introduces a low-bitrate, multi-scale residual codec that encodes speech into four distinct streams: semantic, timbre, prosody, and residual. This architecture achieves high-fidelity speech reconstruction at competitive low bitrates while demonstrating an inherent ability for information disentanglement. We construct a two-stage language model for text-to-speech (TTS) synthesis using this codec, which, despite its lightweight design and minimal data requirements, achieves a state-of-the-art Word Error Rate (WER) and superior speaker similarity compared to several larger models. Furthermore, the codec’s design proves highly effective for voice conversion, enabling independent manipulation of speaker timbre and prosody.
 
@@ -50,9 +48,8 @@ cd MSRCodec
 conda create -n msrcodec -y python=3.10
 conda activate msrcodec
 ```
-- Please install the textless first, following https://github.com/facebookresearch/textlesslib/tree/main
+- Please install the textless first, following https://github.com/facebookresearch/textlesslib/tree/main , or
 
-- Or 
 ``` sh
 git clone https://github.com/facebookresearch/textlesslib.git
 git clone https://github.com/facebookresearch/fairseq.git
@@ -62,8 +59,22 @@ export PYTHONPATH=textlesslib/:fairseq/:$PYTHONPATH
 ``` sh
 pip install -r requirements.txt
 ```
+---
 
-## **Basic Usage**
+**Checkpoint download**
+
+Please download the pretrained checkpoints into the folder: ckpt
+``` sh
+mkdir ckpt
+```
+- [Hubert model](https://dl.fbaipublicfiles.com/textless_nlp/twist/speech_tokenizer/mhubert_base_25hz_cp_mls_cv_sp_fisher.pt) 
+- [Hubert quantizer](https://dl.fbaipublicfiles.com/textless_nlp/twist/speech_tokenizer/mhubert_base_25hz_cp_mls_cv_sp_fisher_L11_km500.bin)
+- [CAM++](https://www.modelscope.cn/models/iic/speech_campplus_sv_zh_en_16k-common_advanced/resolve/master/campplus_cn_en_common.pt)
+- [MSR-Codec](https://huggingface.co/HerbertLI/MSR-Codec/tree/main)
+
+---
+
+## Basic Usage
 
 You can simply run the demo with the following commands:
 ``` sh
