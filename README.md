@@ -6,12 +6,12 @@
     Official PyTorch code for inference of <br>
     <b><em>MSR-Codec: A Low-Bitrate Multi-Stream Residual Codec for High-Fidelity Speech Generation with Information Disentanglement</em></b>
     </p>
-    <p>
+    <!-- <p>
       Jingyu Li^1, Guangyan Zhang^1, Zhen Ye^2, Yiwen Guo^3<br>
       1^LIGHTSPEED, Hong Kong SAR<br>
       2^The Hong Kong University of Science and Technology, Hong Kong SAR<br>
       3^Independent Researcher, Corresponding Author<br>
-    </p>
+    </p> -->
 </div>
 
 ## Overview
