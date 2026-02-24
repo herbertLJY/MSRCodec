@@ -18,7 +18,7 @@
 
 Audio codecs are a critical component of modern speech generation systems. This paper introduces a low-bitrate, multi-scale residual codec that encodes speech into four distinct streams: semantic, timbre, prosody, and residual. This architecture achieves high-fidelity speech reconstruction at competitive low bitrates while demonstrating an inherent ability for information disentanglement. We construct a two-stage language model for text-to-speech (TTS) synthesis using this codec, which, despite its lightweight design and minimal data requirements, achieves a state-of-the-art Word Error Rate (WER) and superior speaker similarity compared to several larger models. Furthermore, the codec’s design proves highly effective for voice conversion, enabling independent manipulation of speaker timbre and prosody.
 
-Our paper on this project has been published! You can read it here: [MSR-Codec](https://arxiv.org/pdf/2509.13068).
+Our paper on this project has been published! You can read it here: [MSR-Codec](https://arxiv.org/abs/2509.13068).
 
 ### Key Words
 
